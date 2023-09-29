@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Riverstone_RewardPoints::reward_menu" title="Reward Points" module="Riverstone_RewardPoints"
+             sortOrder="9999" parent="Magento_Backend::marketing" resource="Magento_Backend::marketing"/>
+        <add id="Riverstone_RewardPoints::reward_rules" title="Reward Points Rules" module="Riverstone_RewardPoints"
+             sortOrder="10"
+             parent="Riverstone_RewardPoints::reward_menu" action="reward/index/index"
+             resource="Riverstone_RewardPoints::reward_rules"/>
+    </menu>
+</config>

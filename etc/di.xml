@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="reward_listing_data_source" xsi:type="string">
+                    Riverstone\RewardPoints\Model\ResourceModel\RewardPoints\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Riverstone\RewardPoints\Model\ResourceModel\RewardPoints\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">reward_points_rule</argument>
+            <argument name="resourceModel" xsi:type="string">Riverstone\RewardPoints\Model\ResourceModel\RewardPoints</argument>
+            <argument name="eventPrefix" xsi:type="string">reward_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">reward_grid_collection</argument>
+        </arguments>
+    </virtualType>
+</config>

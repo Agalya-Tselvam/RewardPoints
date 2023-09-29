@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="reward_points_rule" resource="default" engine="innodb"
+           comment="Riverstone Reward Points">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="text" name="rule_name"  nullable="false" comment="Rule Name"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Description"/>
+        <column xsi:type="int" name="active" nullable="false" comment="Active"/>
+        <column xsi:type="text" name="websites" nullable="false" comment="Websites"/>
+        <column xsi:type="text" name="customer_group" nullable="false" comment="Customer Group"/>
+        <column xsi:type="timestamp" name="rule_from" nullable="false" comment="Rule from"/>
+        <column xsi:type="timestamp" name="rule_to" nullable="false" comment="Rule To"/>
+        <column xsi:type="text" name="priority" nullable="false" comment="Priority"/>
+        <column xsi:type="int" name="allow_notification" nullable="false" comment="Allow Notification"/>
+        <column xsi:type="text" name="personal_email_template" nullable="false" comment=" Personal Email Template"/>
+        <column xsi:type="int" name="rss_feed" nullable="false" comment=" Public In RSS Feed"/>
+        <column xsi:type="text" name="event" nullable="false" comment=" Event"/>
+        <column xsi:type="text" name="give_points" nullable="false" comment="Give Points"/>
+        <column xsi:type="text" name="calculation_type" nullable="false" comment="Calculation Type"/>
+        <column xsi:type="text" name="points_amount" nullable="false" comment="Points Amount "/>
+        <column xsi:type="text" name="stop_rules_processing" nullable="false" comment="Stop Rules Processing"/>
+        <column xsi:type="mediumtext" name="conditions_serialized" comment="Conditions Serialized"/>
+        <column xsi:type="mediumtext" name="actions_serialized" comment="Actions Serialized"/>
+        <column xsi:type="text" name="labels" nullable="false" comment="Default Rule Label for All Store Views"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="reward_points_rule_earn_customer" resource="default" engine="innodb"
+           comment="Riverstone Reward Points Earn for Customer">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="text" name="customer_id"  nullable="false" comment="Customer Id"/>
+        <column xsi:type="text" name="rule_des" nullable="false" comment="Rule Description"/>
+        <column xsi:type="int" name="rule_points" nullable="false" comment="Rule Points"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="quote" resource="checkout" comment="Sales Flat Quote">
+        <column xsi:type="decimal" name="base_prcredit_amount" scale="4" precision="12" nullable="true" comment="Base Prcredit Amount" />
+        <column xsi:type="decimal" name="prcredit_amount" scale="4" precision="12" nullable="true" comment="Prcredit Amount" />
+        <column xsi:type="decimal" name="base_prcredit_earn_amount" scale="4" precision="12" nullable="true" comment="Base Prcredit Earn Amount" />
+        <column xsi:type="decimal" name="prcredit_earn_amount" scale="4" precision="12" nullable="true" comment="Prcredit Earn Amount" />
+        <column xsi:type="text" name="prcredit_applied_earn_rule_ids" nullable="true" comment="Prcredit Applied Earn Rule Ids" />
+        <column xsi:type="text" name="prcredit_applied_earn_rule_names" nullable="true" comment="Prcredit Applied Earn Rule Names" />
+    </table>
+    <table name="quote_address" resource="checkout" comment="Sales Flat Quote Address">
+        <column xsi:type="decimal" name="base_prcredit_amount" scale="4" precision="12" nullable="true" comment="Base Prcredit Amount" />
+        <column xsi:type="decimal" name="prcredit_amount" scale="4" precision="12" nullable="true" comment="Prcredit Amount" />
+    </table>
+    <table name="quote_item" resource="checkout" comment="Sales Flat Quote Item">
+        <column xsi:type="decimal" name="base_prcredit_earn_amount" scale="4" precision="12" nullable="true" comment="Base Prcredit Earn Amount" />
+        <column xsi:type="decimal" name="prcredit_earn_amount" scale="4" precision="12" nullable="true" comment="Prcredit Earn Amount" />
+        <column xsi:type="text" name="prcredit_applied_earn_rule_ids" nullable="true" comment="Prcredit Applied Earn Rule Ids" />
+        <column xsi:type="text" name="prcredit_applied_earn_rule_names" nullable="true" comment="Prcredit Applied Earn Rule Names" />
+    </table>
+    <table name="sales_order" resource="sales" comment="Sales Flat Order Address">
+        <column xsi:type="decimal" name="base_prcredit_amount" nullable="true" scale="4" precision="12" comment="Base Prcredit Amount"/>
+        <column xsi:type="decimal" name="prcredit_amount" nullable="true" scale="4" precision="12" comment="Prcredit Amount"/>
+        <column xsi:type="decimal" name="base_prcredit_refunded_amount" nullable="true" scale="4" precision="12" comment="Base Prcredit Refunded Amount"/>
+        <column xsi:type="decimal" name="prcredit_refunded_amount" nullable="true" scale="4" precision="12" comment="Prcredit Refunded Amount"/>
+        <column xsi:type="decimal" name="base_prcredit_refunded_real_amount" nullable="true" scale="4" precision="12" comment="Base Prcredit Refunded Real Amount"/>
+        <column xsi:type="decimal" name="prcredit_refunded_real_amount" nullable="true" scale="4" precision="12" comment="Prcredit Refunded Real Amount"/>
+        <column xsi:type="decimal" name="base_prcredit_earn_amount" nullable="true" scale="4" precision="12" comment="Base Prcredit Earn Amount"/>
+        <column xsi:type="decimal" name="prcredit_earn_amount" nullable="true" scale="4" precision="12" comment="Prcredit Earn Amount"/>
+        <column xsi:type="text" name="prcredit_applied_earn_rule_ids" nullable="true" comment="Prcredit Applied Earn Rule Ids"/>
+        <column xsi:type="text" name="prcredit_applied_earn_rule_names" nullable="true" comment="Prcredit Applied Earn Rule Names"/>
+    </table>
+</schema>

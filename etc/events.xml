@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_after">
+        <observer name="place_order_after_reward" instance="Riverstone\RewardPoints\Observer\OrderPlaceAfterSavePoints"/>
+    </event>
+    <event name="catalog_controller_product_view">
+        <observer name="product_view_reward_rule_display" instance="Riverstone\RewardPoints\Observer\RuleDisplayForProducts" />
+    </event>
+</config>
